@@ -1,0 +1,40 @@
+// 225. Implement Stack using Queues
+class MyStack {
+    Queue<Integer> queue=new LinkedList<>();
+
+    public MyStack() {
+        
+    }
+    
+    public void push(int x) {
+        queue.add(x);
+        
+    }
+    
+    public int pop() {
+         // 1 2 3 4
+        for(int i=1;i<=queue.size()-1;i++){
+            queue.add(queue.remove());
+        }
+         // 4 1 2 3
+       int val= queue.remove();// 4   1 2 3
+        return val;
+    }
+    
+    public int top() {
+        // 1 2 3 4
+        for(int i=1;i<=queue.size()-1;i++){
+            queue.add(queue.remove());
+        }
+         // 4 1 2 3
+       int val= queue.peek();
+        queue.add(queue.remove());
+        return val;
+
+    }
+    
+    public boolean empty() {
+       if(queue.isEmpty()) return true;
+       else return false;
+    }
+}
