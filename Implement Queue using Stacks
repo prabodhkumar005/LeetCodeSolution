@@ -1,0 +1,39 @@
+// 232. Implement Queue using Stacks
+class MyQueue {
+    Stack<Integer>stack=new Stack<>();
+    Stack<Integer>helper=new Stack<>();
+    public MyQueue() {
+        
+    }
+    
+    public void push(int x) {
+        stack.push(x);
+    }
+    
+    public int pop() {
+        while(stack.size()>1){
+            helper.push(stack.pop());
+        }
+        int x=stack.pop();
+        while(helper.size()>0){
+            stack.push(helper.pop());
+        }
+        return x;
+    }
+    
+    public int peek() {
+         while(stack.size()>1){
+            helper.push(stack.pop());
+        }
+        int x=stack.peek();
+        while(helper.size()>0){
+            stack.push(helper.pop());
+        }
+        return x;
+    }
+    
+    public boolean empty() {
+        if(stack.isEmpty()) return true;
+        else return false;
+    }
+}
