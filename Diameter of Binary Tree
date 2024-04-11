@@ -1,0 +1,21 @@
+// 543. Diameter of Binary Tree
+class Solution {
+    private int ans = 0;
+    public int diameterOfBinaryTree(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        heightOfTree(root);
+        return ans;
+    }
+
+    private int heightOfTree(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int leftHeight = heightOfTree(root.left);
+        int rightHeight = heightOfTree(root.right);
+        ans = Math.max(ans, leftHeight + rightHeight);
+        return 1 + Math.max(leftHeight, rightHeight);
+    }
+}
