@@ -1,0 +1,22 @@
+// 113. Path Sum II
+class Solution {
+    void totalPathSum(TreeNode root, int targetSum, List<Integer> list, List<List<Integer>> result) {
+        if (root == null) {
+            return;
+        }
+        list.add(root.val);
+        if (root.left == null && root.right == null && targetSum - root.val == 0) {
+            result.add(new ArrayList<>(list));
+        }
+        totalPathSum(root.left, targetSum - root.val, list, result);
+        totalPathSum(root.right, targetSum - root.val, list, result);
+        list.remove(list.size() - 1); // Backtrack
+    }
+
+    public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
+        List<List<Integer>> result = new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
+        totalPathSum(root, targetSum, list, result);
+        return result;
+    }
+}
