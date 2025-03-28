@@ -8,3 +8,21 @@ class Solution {
         return false;
     }
 }
+
+// brute force approach 
+
+class Solution {
+    public boolean containsDuplicate(int[] nums) {
+        // Use two loops to compare every pair of elements
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i + 1; j < nums.length; j++) {
+                // If we find a pair with equal values, return true
+                if (nums[i] == nums[j]) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+}
+// this will give time limit exceeded error in case of large array size
