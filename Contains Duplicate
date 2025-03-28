@@ -9,20 +9,17 @@ class Solution {
     }
 }
 
-// brute force approach 
+// using hashset 
 
 class Solution {
     public boolean containsDuplicate(int[] nums) {
-        // Use two loops to compare every pair of elements
-        for (int i = 0; i < nums.length; i++) {
-            for (int j = i + 1; j < nums.length; j++) {
-                // If we find a pair with equal values, return true
-                if (nums[i] == nums[j]) {
-                    return true;
-                }
+        HashSet<Integer> set = new HashSet<>();
+        for(int i=0;i<nums.length;i++){
+            if(set.contains(nums[i])){
+                return true;
             }
+            set.add(nums[i]);
         }
         return false;
     }
 }
-// this will give time limit exceeded error in case of large array size
